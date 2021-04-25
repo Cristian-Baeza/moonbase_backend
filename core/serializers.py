@@ -1,13 +1,21 @@
 from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Favorite
+
+
+
+class FavoriteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Favorite
+        fields = ['id', 'uri', 'name', 'description']
+
 
 # Serializes current user
 class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['username']
+        fields = ['id','username', 'favorites']
 
 # Serializes new user sign ups that responds with the new user's information including a new token.
 class UserSerializerWithToken(serializers.ModelSerializer):
