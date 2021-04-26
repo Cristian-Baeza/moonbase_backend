@@ -6,6 +6,7 @@ class Favorite(models.Model):
     uri = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
+    image = models.CharField(max_length=255)
 
     user = models.ForeignKey(User, related_name='favorites', on_delete=models.CASCADE)
 
