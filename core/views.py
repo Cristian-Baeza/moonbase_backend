@@ -1,10 +1,17 @@
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
-from rest_framework import permissions, status
+from rest_framework import permissions, status, viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import UserSerializer, UserSerializerWithToken
+
+from .models import Favorite
+from .serializers import FavoriteSerializer
+
+class FavoriteViewSet(viewsets.ModelViewSet):
+    queryset = Favorite.objects.all()
+    serializer_class = FavoriteSerializer
 
 # The core of this functionality is the api_view decorator, which takes a list of HTTP methods that your view should respond to.
 @api_view(['GET'])

@@ -8,12 +8,12 @@ from .models import Favorite
 class FavoriteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Favorite
-        fields = ['id', 'uri', 'name', 'description']
+        fields = ['id','user', 'uri', 'name', 'description']
 
 
 # Serializes current user
 class UserSerializer(serializers.ModelSerializer):
-
+    favorites = FavoriteSerializer()
     class Meta:
         model = User
         fields = ['id','username', 'favorites']
