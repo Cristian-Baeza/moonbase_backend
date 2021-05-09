@@ -67,6 +67,7 @@ REST_FRAMEWORK = {
 
 
 CORS_ORIGIN_WHITELIST = [
+    'https://moonbase-slc.com',
     'https://localhost:3000',
     'http://localhost:3000',
     'https://localhost:3001',
